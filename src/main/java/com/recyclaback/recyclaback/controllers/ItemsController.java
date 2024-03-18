@@ -28,10 +28,7 @@ public class ItemsController {
     @ResponseBody
     private Item getItemById(@RequestParam Long id) {
         Optional<Item> item = itemRepository.findById(id);
-        if (item.isPresent()){
-            return item.get();
-        }
-        return null;
+        return item.orElse(null);
     }
 
     public Item saveItem(Item item) {
